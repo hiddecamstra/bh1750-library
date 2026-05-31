@@ -4,8 +4,8 @@
  *  This is a library made for the functions of a BH1750 light sensor.
  */
 #include "Arduino.h"
-#ifndef HIDDEBH1750_H
-#define HIDDEBH1750_H
+#ifndef BH1750_HPP
+#define BH1750_HPP
 
 #include <Wire.h>
 
