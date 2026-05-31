@@ -21,6 +21,7 @@ class MyLightSensor{
     {}
     void begin();
     void blinkLed();
+    
 };
 
 #endif

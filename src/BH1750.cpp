@@ -8,7 +8,7 @@ void MyLightSensor::begin(){
 
 void MyLightSensor::blinkLed(){
     digitalWrite(ledPin, HIGH);
-    delay(250);
+    delay(1000);
     digitalWrite(ledPin, LOW);
-    delay(250);
+    delay(1000);
 }
