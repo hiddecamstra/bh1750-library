@@ -1,0 +1,19 @@
+var NAVTREEINDEX0 =
+{
+"_b_h1750_8cpp.html":[1,0,1,0],
+"_b_h1750_8hpp.html":[1,0,0,0],
+"_b_h1750_8hpp_source.html":[1,0,0,0],
+"annotated.html":[0,0],
+"class_my_light_sensor.html":[0,0,0],
+"class_my_light_sensor.html#a146216cc1837e7dbb8f68aafd59a5c0b":[0,0,0,0],
+"class_my_light_sensor.html#a2dcb9cace1d62c090a5cf96efcefb679":[0,0,0,1],
+"class_my_light_sensor.html#a7c5dbbee1521a42a8c89a24954f99b2b":[0,0,0,2],
+"classes.html":[0,1],
+"dir_68267d1309a1af8e8297ef4c3efbcdba.html":[1,0,1],
+"dir_d44c64559bbebec7f509842c48db8b23.html":[1,0,0],
+"files.html":[1,0],
+"functions.html":[0,2,0],
+"functions_func.html":[0,2,1],
+"index.html":[],
+"pages.html":[]
+};
