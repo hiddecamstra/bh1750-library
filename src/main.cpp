@@ -1,17 +1,18 @@
+#ifndef PIO_UNIT_TESTING
+
 #include <Arduino.h>
 #include <Wire.h>
 #include "BH1750.hpp"
-//#define CATCH_CONFIG_MAIN
-//#include "../test/catch.hpp"
 
 int ledPin = 13;
-MyLightSensor a = MyLightSensor(ledPin);
-
+MyLightSensor a(ledPin);
 
 void setup() {
-  a.begin();
+    a.begin();
 }
 
 void loop() {
-  a.blinkLed();
+    a.blinkLed();
 }
+
+#endif

@@ -1,6 +1,4 @@
-//#include <BH1750.hpp>
 #include "BH1750.hpp"
-//#include <BH1750.hpp>
 
 void MyLightSensor::begin(){
     pinMode(ledPin, OUTPUT);
