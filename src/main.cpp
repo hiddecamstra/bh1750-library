@@ -47,11 +47,11 @@ void loop() {
     if (!Serial.available())
         return;
 
-    int incomingByte = Serial.parseInt();
+    int userInput = Serial.parseInt();
     
     switch (currentState) {
         case DEFAULT_MENU:
-            switch (incomingByte) {
+            switch (userInput) {
                 case 1:
                     Serial.println("OLAAA");
                     break;
@@ -73,7 +73,7 @@ void loop() {
             showMenu();
             break;
         case CHANGE_VALUE:
-            ChangeValue(incomingByte);
+            ChangeValue(userInput);
             break;
     }
 }
