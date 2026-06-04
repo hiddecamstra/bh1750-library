@@ -5,9 +5,10 @@
 #include "BH1750.hpp"
 
 int ledPin = 13;
-MyLightSensor a(ledPin);
+LightSensor a;
 
 int lightThreshold = 0;
+float lux = 0;
 
 enum State {
     DEFAULT_MENU,
@@ -36,6 +37,7 @@ void ChangeValue(int valueToChangeTo){
 
 void setup() {
     a.begin();
+    pinMode(ledPin, OUTPUT);
     Serial.begin(9600);
 
     while (!Serial);
@@ -44,6 +46,19 @@ void setup() {
 }
 
 void loop() {
+    lux = a.getLux();
+    //Serial.println(lux);
+
+    if (lux < lightThreshold)
+    {
+        digitalWrite(ledPin, HIGH);
+    }
+    else{
+        digitalWrite(ledPin, LOW);
+    }
+
+    delay(1000);
+
     if (!Serial.available())
         return;
 

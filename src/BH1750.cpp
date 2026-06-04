@@ -1,12 +1,35 @@
 #include "BH1750.hpp"
+#include <Wire.h>
 
-void MyLightSensor::begin(){
-    pinMode(ledPin, OUTPUT);
+void LightSensor::begin(){
+    Wire.begin();
+    Wire.setClock(4000000);
 }
 
-void MyLightSensor::blinkLed(){
-    digitalWrite(ledPin, HIGH);
-    delay(1000);
-    digitalWrite(ledPin, LOW);
-    delay(1000);
+void LightSensor::writeToI2C(uint8_t opecode){
+    Wire.beginTransmission(slaveAddress);
+    Wire.write(opecode);
+    Wire.endTransmission();
+}
+
+uint16_t LightSensor::readFromI2C(){
+    uint8_t highByte = 0;
+    uint8_t lowByte = 0;
+    uint16_t combined = 0;
+
+    Wire.requestFrom(slaveAddress, 2);
+    highByte = Wire.read();
+    lowByte = Wire.read();
+
+    combined = highByte;
+    combined = combined << 8;
+    combined += lowByte;
+
+    return combined;
+}
+
+float LightSensor::getLux(){
+    writeToI2C(0b00010000);
+    float rawdata = readFromI2C();
+    return rawdata / 1.2;
 }

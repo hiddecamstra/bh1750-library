@@ -4,15 +4,16 @@
 
 #include <Wire.h>
 
-class MyLightSensor{
+class LightSensor{
   private:
-    int ledPin;
+    uint8_t slaveAddress = 0b0100011;
+    void writeToI2C(uint8_t opecode);
+    uint16_t readFromI2C();
   public:
-    MyLightSensor(int ledPin) : ledPin(ledPin) 
+    LightSensor()
     {}
     void begin();
-    void blinkLed();
-    
+    float getLux();
 };
 
 #endif
