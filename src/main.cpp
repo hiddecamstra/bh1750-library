@@ -10,6 +10,8 @@ LightSensor a;
 int lightThreshold = 0;
 float lux = 0;
 
+int i = 0;
+
 enum State {
     DEFAULT_MENU,
     CHANGE_VALUE
@@ -47,8 +49,34 @@ void setup() {
 
 void loop() {
     lux = a.getLux();
-    //Serial.println(lux);
-
+    Serial.println(lux);
+    if (i == 6){
+        i = 0;
+    }
+    switch (i)
+    {
+    case 0:
+        a.switchMode(CONTINUOUSLY_L_RESOLUTION_MODE);
+        break;
+    case 1:
+        a.switchMode(CONTINUOUSLY_H_RESOLUTION_MODE);
+        break;
+    case 2:
+        a.switchMode(CONTINUOUSLY_H_RESOLUTION_MODE2);
+        break;
+    case 3:
+        a.switchMode(ONE_TIME_L_RESOLUTION_MODE);
+        break;
+    case 4:
+        a.switchMode(ONE_TIME_H_RESOLUTION_MODE);
+        break;
+    case 5:
+        a.switchMode(ONE_TIME_H_RESOLUTION_MODE2);
+        break;
+    default:
+        break;
+    }
+    i++; 
     if (lux < lightThreshold)
     {
         digitalWrite(ledPin, HIGH);

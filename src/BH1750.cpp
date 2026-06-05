@@ -29,7 +29,11 @@ uint16_t LightSensor::readFromI2C(){
 }
 
 float LightSensor::getLux(){
-    writeToI2C(0b00010000);
+    writeToI2C(currentMode);
     float rawdata = readFromI2C();
     return rawdata / 1.2;
+}
+
+void LightSensor::switchMode(Modes newMode){
+    currentMode = newMode;
 }
