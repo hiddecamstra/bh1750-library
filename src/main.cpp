@@ -50,6 +50,12 @@ void setup() {
 void loop() {
     lux = a.getLux();
     Serial.println(lux);
+    if (i % 2 == 0){
+        a.switchAddress(H);
+    }
+    else{
+        a.switchAddress(L);
+    }
     if (i == 6){
         i = 0;
     }
