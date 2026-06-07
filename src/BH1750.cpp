@@ -7,7 +7,7 @@ void LightSensor::begin(){
 }
 
 void LightSensor::changeMeasurementTime(){
-    switch (currentMessage)
+    switch (currentMode)
     {
     case CONTINUOUSLY_H_RESOLUTION_MODE:
     case CONTINUOUSLY_H_RESOLUTION_MODE2:
@@ -26,7 +26,7 @@ void LightSensor::changeMeasurementTime(){
 
 bool LightSensor::writeToI2C(){
     Wire.beginTransmission(currentAddress);
-    Wire.write(currentMessage);
+    Wire.write(currentMode);
     uint8_t statusOfTransmission = Wire.endTransmission();
     
     if (statusOfTransmission == 0){
@@ -75,8 +75,8 @@ float LightSensor::getLux(){
     }
 }
 
-void LightSensor::switchMessage(MESSAGES newMessage){
-    currentMessage = newMessage;
+void LightSensor::switchModes(MODES newMode){
+    currentMode = newMode;
     changeMeasurementTime();
 }
 

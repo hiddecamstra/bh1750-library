@@ -45,7 +45,7 @@ void setup() {
     while (!Serial);
 
     a.begin();
-    a.switchMessage(CONTINUOUSLY_L_RESOLUTION_MODE);
+    a.switchModes(CONTINUOUSLY_L_RESOLUTION_MODE);
     
     pinMode(addressPin, OUTPUT);
     digitalWrite(addressPin, HIGH);
