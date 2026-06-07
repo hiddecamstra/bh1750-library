@@ -6,13 +6,14 @@
 
 int ledPin = 13;
 LightSensor a;
+int addressPin = 12;
 
 int lightThreshold = 0;
 float lux = 0;
 
 enum State {
     DEFAULT_MENU,
-    CHANGE_VALUE
+    CHANGE_THRESHOLD
 };
 
 State currentState = DEFAULT_MENU;
@@ -20,72 +21,71 @@ State currentState = DEFAULT_MENU;
 void showMenu() {
     Serial.println();
     Serial.println("===== MENU =====");
-    Serial.println("1: Turn on LED with default values");
-    Serial.println("2: Change measuring mode");
-    Serial.println("3: Check current sensitivity threshold");
-    Serial.println("4: Change sensitivity threshold");
-    Serial.print("> ");
+    Serial.println("1: Check current sensitivity threshold");
+    Serial.println("2: Change sensitivity threshold");
+    Serial.println("> ");
 }
 
-void ChangeValue(int valueToChangeTo){
-  lightThreshold = valueToChangeTo;
-  Serial.print("Threshold changed to: ");
-  Serial.println(lightThreshold);
-  currentState = DEFAULT_MENU;
-  showMenu();
-}
-
-void setup() {
-    a.begin();
-    pinMode(ledPin, OUTPUT);
-    Serial.begin(9600);
-    while (!Serial);
-    showMenu();
-}
-
-void loop() {
+void ikeaLamp(){
     lux = a.getLux();
     Serial.println(lux);
-    if (lux < lightThreshold)
+    
+    if (lux < lightThreshold && lux > 0)
     {
         digitalWrite(ledPin, HIGH);
     }
     else{
         digitalWrite(ledPin, LOW);
     }
+}
 
+void setup() {
+    Serial.begin(9600);
+
+    while (!Serial);
+
+    a.begin();
+    a.switchMessage(CONTINUOUSLY_L_RESOLUTION_MODE);
+    
+    pinMode(addressPin, OUTPUT);
+    digitalWrite(addressPin, HIGH);
+    a.switchAddress(H);
+
+    pinMode(ledPin, OUTPUT);
+
+    showMenu();
+}
+
+void loop() {
+    ikeaLamp();
     delay(1000);
 
     if (!Serial.available())
         return;
 
     int userInput = Serial.parseInt();
-    
     switch (currentState) {
         case DEFAULT_MENU:
             switch (userInput) {
                 case 1:
-                    Serial.println("OLAAA");
-                    break;
-                case 2:
-                    Serial.println("DIOS MIO");
-                    break;
-                case 3:
                     Serial.print("Current light sensitivity threshold: ");
                     Serial.println(lightThreshold);
                     break;
-                case 4:
-                    currentState = CHANGE_VALUE;
+                case 2:
+                    currentState = CHANGE_THRESHOLD;
                     Serial.println("Enter new threshold:");
                     return;
+                    break;
                 default:
                     Serial.println("That option does not exist.");
                     break;
             }
             showMenu();
             break;
-        case CHANGE_VALUE:
-            ChangeValue(userInput);
+        case CHANGE_THRESHOLD:
+            lightThreshold = userInput;
+            currentState = DEFAULT_MENU;
+            showMenu();
             break;
     }
 }

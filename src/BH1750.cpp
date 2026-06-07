@@ -3,7 +3,7 @@
 
 void LightSensor::begin(){
     Wire.begin();
-    Wire.setClock(4000000);
+    Wire.setClock(400000);
 }
 
 void LightSensor::changeMeasurementTime(){
@@ -24,38 +24,60 @@ void LightSensor::changeMeasurementTime(){
     }
 }
 
-void LightSensor::writeToI2C(){
+bool LightSensor::writeToI2C(){
     Wire.beginTransmission(currentAddress);
     Wire.write(currentMessage);
-    Wire.endTransmission();
+    uint8_t statusOfTransmission = Wire.endTransmission();
+    
+    if (statusOfTransmission == 0){
+        return true;
+    }
+    else{
+        return false;
+    }
 }
 
-uint16_t LightSensor::readFromI2C(){
+float LightSensor::readFromI2C(){
     uint8_t highByte = 0;
     uint8_t lowByte = 0;
     uint16_t combined = 0;
 
     Wire.requestFrom(currentAddress, 2);
-    highByte = Wire.read();
-    lowByte = Wire.read();
+    if (Wire.available() == 2){
+        highByte = Wire.read();
+        lowByte = Wire.read();
 
-    combined = highByte;
-    combined = combined << 8;
-    combined += lowByte;
+        combined = highByte;
+        combined = combined << 8;
+        combined += lowByte;
 
-    return combined;
+        return combined;
+    }
+    else{
+        return -1;
+    }
 }
 
 float LightSensor::getLux(){
-    changeMeasurementTime();
-    writeToI2C();
+    if (!writeToI2C()){
+        return -1;
+    }
+    
     delay(measurementTime);
+
     float rawdata = readFromI2C();
-    return rawdata / 1.2;
+    
+    if (rawdata != -1){
+        return rawdata / 1.2;
+    }
+    else{
+        return -1;
+    }
 }
 
-void LightSensor::switchMessage(Messages newMessage){
+void LightSensor::switchMessage(MESSAGES newMessage){
     currentMessage = newMessage;
+    changeMeasurementTime();
 }
 
 void LightSensor::switchAddress(ADDRESSES newAddress){
