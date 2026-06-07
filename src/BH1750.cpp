@@ -6,9 +6,27 @@ void LightSensor::begin(){
     Wire.setClock(4000000);
 }
 
+void LightSensor::changeMeasurementTime(){
+    switch (currentMessage)
+    {
+    case CONTINUOUSLY_H_RESOLUTION_MODE:
+    case CONTINUOUSLY_H_RESOLUTION_MODE2:
+    case ONE_TIME_H_RESOLUTION_MODE:
+    case ONE_TIME_H_RESOLUTION_MODE2:
+        measurementTime = 120;
+        break;
+    case CONTINUOUSLY_L_RESOLUTION_MODE:
+    case ONE_TIME_L_RESOLUTION_MODE:
+        measurementTime = 16;
+        break;
+    default:
+        break;
+    }
+}
+
 void LightSensor::writeToI2C(){
     Wire.beginTransmission(currentAddress);
-    Wire.write(currentMode);
+    Wire.write(currentMessage);
     Wire.endTransmission();
 }
 
@@ -29,13 +47,15 @@ uint16_t LightSensor::readFromI2C(){
 }
 
 float LightSensor::getLux(){
+    changeMeasurementTime();
     writeToI2C();
+    delay(measurementTime);
     float rawdata = readFromI2C();
     return rawdata / 1.2;
 }
 
-void LightSensor::switchMode(Modes newMode){
-    currentMode = newMode;
+void LightSensor::switchMessage(Messages newMessage){
+    currentMessage = newMessage;
 }
 
 void LightSensor::switchAddress(ADDRESSES newAddress){

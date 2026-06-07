@@ -3,7 +3,10 @@
 #ifndef BH1750_HPP
 #define BH1750_HPP
 
-enum Modes{
+enum Messages{
+  POWER_DOWN = 0b00000000,
+  POWER_ON = 0b00000001,
+  RESET = 0b00000111,
   CONTINUOUSLY_H_RESOLUTION_MODE = 0b00010000,
   CONTINUOUSLY_H_RESOLUTION_MODE2 = 0b00010001,
   CONTINUOUSLY_L_RESOLUTION_MODE = 0b00010011,
@@ -19,16 +22,18 @@ enum ADDRESSES{
 
 class LightSensor{
   private:
-    Modes currentMode;
+    Messages currentMessage;
     ADDRESSES currentAddress;
+    int measurementTime;
+    void changeMeasurementTime();
     void writeToI2C();
     uint16_t readFromI2C();
   public:
-    LightSensor() : currentMode(CONTINUOUSLY_H_RESOLUTION_MODE), currentAddress(L)
+    LightSensor() : currentMessage(CONTINUOUSLY_H_RESOLUTION_MODE), currentAddress(L), measurementTime(120)
     {}
     void begin();
     float getLux();
-    void switchMode(Modes newMode);
+    void switchMessage(Messages newMessage);
     void switchAddress(ADDRESSES newAddress);
 };
 
