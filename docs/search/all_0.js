@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['begin_0',['begin',['../class_my_light_sensor.html#a2dcb9cace1d62c090a5cf96efcefb679',1,'MyLightSensor']]],
-  ['bh1750_2ecpp_1',['BH1750.cpp',['../_b_h1750_8cpp.html',1,'']]],
-  ['bh1750_2ehpp_2',['BH1750.hpp',['../_b_h1750_8hpp.html',1,'']]],
-  ['blinkled_3',['blinkLed',['../class_my_light_sensor.html#a7c5dbbee1521a42a8c89a24954f99b2b',1,'MyLightSensor']]]
+  ['a_0',['a',['../main_8cpp.html#a87c43d59bf3067aad1210e18a087406e',1,'main.cpp']]],
+  ['addresses_1',['ADDRESSES',['../_b_h1750_8hpp.html#abfe0fd03fb4f86e18da96e3a6ab5cace',1,'BH1750.hpp']]],
+  ['addresspin_2',['addressPin',['../main_8cpp.html#ae6b6655e85b62d8570e31dcaaa56e3ee',1,'main.cpp']]]
 ];
