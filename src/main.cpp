@@ -11,6 +11,8 @@ int addressPin = 12;
 int lightThreshold = 0;
 float lux = 0;
 
+int index = 0;
+
 enum State {
     DEFAULT_MENU,
     CHANGE_THRESHOLD
@@ -39,17 +41,36 @@ void ikeaLamp(){
     }
 }
 
+void exampleForSendingCommands(){
+    index++;
+
+    if (index >= 5){
+        a.sendCommand(POWER_DOWN);
+        Serial.println("Little break!");
+    }
+    else{
+        ikeaLamp();
+    }
+    if(index >= 10){
+        a.sendCommand(POWER_ON);
+        //a.switchModes(ONE_TIME_H_RESOLUTION_MODE);
+        a.switchModes(CONTINUOUSLY_L_RESOLUTION_MODE);
+        index = 0;
+        Serial.println("We roll again! ");
+    }
+}
+
 void setup() {
     Serial.begin(9600);
 
     while (!Serial);
 
     a.begin();
-    a.switchModes(CONTINUOUSLY_L_RESOLUTION_MODE);
-    
+
     pinMode(addressPin, OUTPUT);
     digitalWrite(addressPin, HIGH);
     a.switchAddress(H);
+    a.switchModes(CONTINUOUSLY_L_RESOLUTION_MODE);
 
     pinMode(ledPin, OUTPUT);
 
@@ -57,7 +78,8 @@ void setup() {
 }
 
 void loop() {
-    ikeaLamp();
+    //ikeaLamp();
+    exampleForSendingCommands();
     delay(1000);
 
     if (!Serial.available())
