@@ -1,5 +1,3 @@
-#ifndef PIO_UNIT_TESTING
-
 /*
 This example show do you can control the address of the sensor. By setting the addres to H (HIGH) the returning lux becomes-
 the error code -1. And this code allows the sensor to only work by holding the button. Which sets the ADDR pin to HIGH.
@@ -43,5 +41,3 @@ void loop() {
     
     delay(1000);
 }
-
-#endif
