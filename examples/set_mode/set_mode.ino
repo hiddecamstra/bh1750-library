@@ -1,5 +1,3 @@
-#ifndef PIO_UNIT_TESTING
-
 /*
 In this example is shown how to set a mode. YOu can set for example the mode ONE_TIME_H_RESOLUTION_MODE.
 What this does is that it makes one measurement, and immediatly goes into POWER_DOWN. Which is essentially a kind off sleep state.
@@ -40,5 +38,3 @@ void loop() {
     else
         digitalWrite(ledPin, LOW); // If error turn LED off.
 }
-
-#endif
