@@ -16,28 +16,28 @@ a PULL_DOWN resistor of 10kohm to the GROUND.
 
 const int ledPin = 13;
 
-LightSensor a;
+LightSensor a; // Initiate sensor.
 
 float lux = 0;
-int ledThreshold = 50;
+int ledThreshold = 50; // Set whichever threshold prefered.
 
 void setup() {
     pinMode(ledPin, OUTPUT);
     a.begin();
-    a.setAddress(H);
+    a.setAddress(H); // Set address to HIGH, so it only works if button makes hardware address HIGH.
 }
 
 void loop() {
-    lux = a.getLux();
+    lux = a.getLux(); // Get measurement
 
     if (lux != -1){
-        if (lux < ledThreshold)
+        if (lux < ledThreshold) // Turn LED on if measurement is below threshold.
             digitalWrite(ledPin, HIGH);
         else
             digitalWrite(ledPin, LOW);
     }
     else
-        digitalWrite(ledPin, LOW);
+        digitalWrite(ledPin, LOW); // Turn LED of if error code.
     
     delay(1000);
 }
