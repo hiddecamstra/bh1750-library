@@ -1,5 +1,3 @@
-#ifndef PIO_UNIT_TESTING
-
 /*
 In this example we do a serial print of the lux values. And we also use 2 LED that we power on or off based on the lux measured.
 The two BH1750 sensor (a & b) are on the same SDA and SCL rows, that are connected to the Arduino. But they are differentiated from-
@@ -69,5 +67,3 @@ void loop() {
     
     delay(1000);
 }
-
-#endif
