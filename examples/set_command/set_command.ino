@@ -1,5 +1,3 @@
-#ifndef PIO_UNIT_TESTING
-
 /*
 This example shows you that you can send a command. Like POWER_DOWN sets the sensor in sleep mode. Also you will not be able to-
 read the most recent value. This is however possible if you send the command POWER_ON. This will get the device out of sleep-
@@ -54,5 +52,3 @@ void loop() {
     }
     delay(5000);
 }
-
-#endif
