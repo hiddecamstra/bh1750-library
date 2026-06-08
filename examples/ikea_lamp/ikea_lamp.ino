@@ -1,3 +1,10 @@
+/*
+EXAMPLE for the usage of this BH1750 library.
+Made with an Arduino UNO R3.
+Connect a LED to pin 13 and GROUND.
+Connect BH1750 sensor to VCC, GND, SCL & SDA. ADDR pin to either GROUND or FLOATING (not connected).
+*/
+
 #include <Arduino.h>
 #include "BH1750.hpp"
 
@@ -10,7 +17,7 @@ int lightThreshold = 30;
 void setup() {
     Serial.begin(9600);
     a.begin(); // Initiate light sensor.
-    pinMode(ledPin, OUTPUT);
+    pinMode(ledPin, OUTPUT); // Initiate LED
 }
 
 void loop() {
