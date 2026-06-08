@@ -1,7 +1,7 @@
-#include <Arduino.h>
-
 #ifndef BH1750_HPP
 #define BH1750_HPP
+
+#include <Arduino.h>
 
 enum COMMANDS{
   POWER_DOWN = 0b00000000,
@@ -37,9 +37,9 @@ class LightSensor{
     {}
     void begin();
     float getLux();
-    float switchModes(MODES newMode);
-    void switchAddress(ADDRESSES newAddress);
-    float sendCommand(COMMANDS commandToSend);
+    bool setMode(MODES newMode);
+    void setAddress(ADDRESSES newAddress);
+    bool setCommand(COMMANDS commandToSend);
 };
 
 #endif

@@ -4,6 +4,7 @@
 void LightSensor::begin(){
     Wire.begin();
     Wire.setClock(400000);
+    setMode(currentMode);
 }
 
 void LightSensor::changeMeasurementTime(){
@@ -29,12 +30,10 @@ bool LightSensor::writeToI2C(uint8_t byteToWrite){
     Wire.write(byteToWrite);
     uint8_t statusOfTransmission = Wire.endTransmission();
     
-    if (statusOfTransmission == 0){
+    if (statusOfTransmission == 0)
         return true;
-    }
-    else{
+    else
         return false;
-    }
 }
 
 float LightSensor::readFromI2C(){
@@ -53,40 +52,38 @@ float LightSensor::readFromI2C(){
 
         return combined;
     }
-    else{
+    else
         return -1;
-    }
 }
 
 float LightSensor::getLux(){
-    if (poweredDown){
+    if (poweredDown)
         return -1;
-    }
     delay(measurementTime);
 
     float rawdata = readFromI2C();
     
-    if (rawdata != -1){
+    if (rawdata != -1)
         return rawdata / 1.2;
-    }
-    else{
+    else
         return -1;
-    }
 }
 
-float LightSensor::switchModes(MODES newMode){
+bool LightSensor::setMode(MODES newMode){
+    if (!writeToI2C(newMode))
+        return false;
     currentMode = newMode;
-    if (!writeToI2C(newMode)){
-        return -1;
-    }
     changeMeasurementTime();
+    return true;
 }
 
-void LightSensor::switchAddress(ADDRESSES newAddress){
+void LightSensor::setAddress(ADDRESSES newAddress){
     currentAddress = newAddress;
 }
 
-float LightSensor::sendCommand(COMMANDS commandToSend){
+bool LightSensor::setCommand(COMMANDS commandToSend){
+    if (!writeToI2C(commandToSend))
+        return false;
     switch (commandToSend)
     {
     case POWER_DOWN:
@@ -98,7 +95,5 @@ float LightSensor::sendCommand(COMMANDS commandToSend){
     default:
         break;
     }
-    if (!writeToI2C(commandToSend)){
-        return -1;
-    }
+    return true;
 }
