@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['exampleforsendingcommands_0',['exampleForSendingCommands',['../main_8cpp.html#a5d9b6876d20864a1e1e67330dce29191',1,'main.cpp']]]
+  ['getlux_0',['getLux',['../class_light_sensor.html#a17adab127a14786df294a658c9ee4a6d',1,'LightSensor']]]
 ];

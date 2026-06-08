@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['getlux_0',['getLux',['../class_light_sensor.html#a17adab127a14786df294a658c9ee4a6d',1,'LightSensor']]]
+  ['l_0',['L',['../_b_h1750_8hpp.html#abfe0fd03fb4f86e18da96e3a6ab5caceaef31cc6fe9479955961311ee18ac205f',1,'BH1750.hpp']]],
+  ['lightsensor_1',['LightSensor',['../class_light_sensor.html',1,'LightSensor'],['../class_light_sensor.html#a43daac1a28e255523d53b012a2e0a302',1,'LightSensor::LightSensor()']]]
 ];

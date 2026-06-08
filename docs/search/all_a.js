@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['one_5ftime_5fh_5fresolution_5fmode_0',['ONE_TIME_H_RESOLUTION_MODE',['../_b_h1750_8hpp.html#a582346db9714dce166cc3a339f1bb2aca151a9b6e79ac19f3a7ac3e26b69134ea',1,'BH1750.hpp']]],
-  ['one_5ftime_5fh_5fresolution_5fmode2_1',['ONE_TIME_H_RESOLUTION_MODE2',['../_b_h1750_8hpp.html#a582346db9714dce166cc3a339f1bb2aca97273d592083290f2513679b3553e82d',1,'BH1750.hpp']]],
-  ['one_5ftime_5fl_5fresolution_5fmode_2',['ONE_TIME_L_RESOLUTION_MODE',['../_b_h1750_8hpp.html#a582346db9714dce166cc3a339f1bb2aca3470ddbd3eab93ce1fd094af577abb18',1,'BH1750.hpp']]]
+  ['setaddress_0',['setAddress',['../class_light_sensor.html#adacd2e3bb1d59afc718b1ddec90dd61d',1,'LightSensor']]],
+  ['setcommand_1',['setCommand',['../class_light_sensor.html#adc30c57973ad3f400b8ce78aa9e26464',1,'LightSensor']]],
+  ['setmode_2',['setMode',['../class_light_sensor.html#ae40284ce7c3c46d913b83fab8810c4f6',1,'LightSensor']]]
 ];

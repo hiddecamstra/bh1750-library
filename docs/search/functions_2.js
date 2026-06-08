@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['getlux_0',['getLux',['../class_light_sensor.html#a17adab127a14786df294a658c9ee4a6d',1,'LightSensor']]]
+  ['lightsensor_0',['LightSensor',['../class_light_sensor.html#a43daac1a28e255523d53b012a2e0a302',1,'LightSensor']]]
 ];

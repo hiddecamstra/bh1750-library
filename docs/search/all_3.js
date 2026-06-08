@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['default_5fmenu_0',['DEFAULT_MENU',['../main_8cpp.html#a5d74787dedbc4e11c1ab15bf487e61f8aa64a6e13af35de0fa0f17b60cc8623cc',1,'main.cpp']]]
+  ['getlux_0',['getLux',['../class_light_sensor.html#a17adab127a14786df294a658c9ee4a6d',1,'LightSensor']]]
 ];
