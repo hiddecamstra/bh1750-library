@@ -6,3 +6,6 @@
 
 # Doxygen
 Doxyfile
+
+# Platformio
+platformio.ini
