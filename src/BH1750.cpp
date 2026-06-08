@@ -83,7 +83,7 @@ void LightSensor::setAddress(ADDRESSES newAddress){
 }
 
 bool LightSensor::setCommand(COMMANDS commandToSend){
-    if (!writeToI2C(commandToSend)) // Return if writing went wrong. Or variable is set incorrectly.
+    if (!writeToI2C(commandToSend)) // Return if writing went wrong.
         return false;
     switch (commandToSend)
     {
